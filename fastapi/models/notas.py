@@ -18,5 +18,5 @@ class Notas(ormar.Model):
     average: float = ormar.Float()
     status: str = ormar.String(max_length = 1)
 
-    studant: Optional[Aluno] = ormar.ForeignKey(Aluno)
-    matter: Optional[Materia] = ormar.ForeignKey(Materia)
+    studant: Optional[Aluno] = ormar.ForeignKey(Aluno, skip_reverse=True)
+    matter: Optional[Materia] = ormar.ForeignKey(Materia, skip_reverse=True)

@@ -15,4 +15,4 @@ class Turma(ormar.Model):
     duracao: float = ormar.Float()
     start_date: str = ormar.Date()
     
-    dean: Optional[Professor] = ormar.ForeignKey(Professor)
+    dean: Optional[Professor] = ormar.ForeignKey(Professor, skip_reverse=True)

@@ -17,4 +17,4 @@ class Professor(ormar.Model):
     start_date: str = ormar.Date()
     birth: str = ormar.Date()
     
-    user: Optional[Usuario] = ormar.ForeignKey(Usuario)
+    user: Optional[Usuario] = ormar.ForeignKey(Usuario, skip_reverse=True)

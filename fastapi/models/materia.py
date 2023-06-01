@@ -16,5 +16,5 @@ class Materia(ormar.Model):
     description: str = ormar.String(max_length = 200)
     hours: float = ormar.Float()
 
-    course: Optional[Curso] = ormar.ForeignKey(Curso)
-    professor: Optional[Professor] = ormar.ForeignKey(Professor)
+    course: Optional[Curso] = ormar.ForeignKey(Curso, skip_reverse=True)
+    professor: Optional[Professor] = ormar.ForeignKey(Professor, skip_reverse=True)

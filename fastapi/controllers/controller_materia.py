@@ -2,6 +2,7 @@ import ormar
 from fastapi import APIRouter, Response
 
 from models.materia import Materia
+from models.requests.materia_update import MateriaUpdate
 
 router = APIRouter()
 
@@ -18,7 +19,7 @@ async def add_materia(materia : Materia):
 async def view_materia(materia_id : int, response : Response):
     try:
         materia = await materia.objects.get(id = materia_id)
-        return await materia
+        return materia
     except:
         response.status_code = 404
         return {'mensagem' : 'materia de id não encontrado'}
@@ -31,3 +32,14 @@ async def delete_materia(materia_id : int, response : Response):
     except:
         response.status_code = 404
         return {'mensagem' : 'materia de id não encontrado'}
+    
+@router.patch('/{meteria_id}')
+async def change_materia(materia_atualizada : MateriaUpdate, materia_id : int, response : Response):
+    try:
+        materia_salva = await Materia.objects.get(id = materia_id)
+        props_atualizadas = materia_atualizada.dict(exclude_unset=True)
+        await materia_salva.update(**props_atualizadas)
+        return materia_salva
+    except:
+        response.status_code = 404
+        return {'mensagem' : 'materia de id nao encontrado'}
