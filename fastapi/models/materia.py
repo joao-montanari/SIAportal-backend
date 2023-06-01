@@ -2,8 +2,8 @@ import ormar
 from typing import Optional
 
 from config import database, metadata
-from curso import Curso
-from professor import Professor
+from models.curso import Curso
+from models.professor import Professor
 
 class Materia(ormar.Model):
     class Meta:

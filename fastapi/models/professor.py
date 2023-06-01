@@ -2,7 +2,7 @@ import ormar
 from typing import Optional
 
 from config import database, metadata
-from usuario import Usuario
+from models.usuario import Usuario
 
 class Professor(ormar.Model):
     class Meta:

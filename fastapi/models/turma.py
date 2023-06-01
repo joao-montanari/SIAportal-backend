@@ -2,7 +2,7 @@ import ormar
 from typing import Optional
 
 from config import database, metadata
-from professor import Professor
+from models.professor import Professor
 
 class Turma(ormar.Model):
     class Meta:
